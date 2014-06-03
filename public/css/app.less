@@ -1,6 +1,123 @@
-/** bootstrap customization **/
-
-
-
 @import '../components/bootstrap-less/less/bootstrap.less';
 
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+@orange: #ea9919;
+@gray: #a1a1a5;
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+.border-radius(@radius) {
+  .border-top-radius(@radius);
+  .border-left-radius(@radius);
+  .border-right-radius(@radius);
+  .border-bottom-radius(@radius);
+}
+
+/* ==========================================================================
+   Globals
+   ========================================================================== */
+
+@media (min-width: @screen-md-min) {
+  .container {
+    width: 909px;
+  }
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.navbar {
+  height: 75px;
+}
+.navbar.navbar-ingenuity {
+  background: url(http://www.ingenuitydesign.com/storage/template/smtop_bg_gradient.png) repeat-x;
+  z-index: 6;
+}
+.navbar.navbar-ingenuity .icon-bar {
+  background-color: #c4c4c6;
+}
+.navbar .container .navbar-brand {
+  padding: 0;
+  margin: 0;
+  margin-left: 20px;
+  display: block;
+  width: 209px;
+}
+.navbar .container .navbar-brand img {
+  width: 209px;
+}
+.navbar .navbar-nav li {
+  padding-top: 27px;
+}
+.navbar .navbar-nav li.active a,
+.navbar .navbar-nav li a:hover,
+.navbar .navbar-nav li a:focus,
+.navbar .navbar-nav li a:active {
+  background: none;
+  border: 0;
+}
+.navbar .navbar-nav li a:hover,
+.navbar .navbar-nav li a:focus,
+.navbar .navbar-nav li a:active {
+  color: #C4C4C6;
+  border: 0;
+}
+.navbar .navbar-nav li a {
+  cursor: pointer;
+  color: @orange;
+  font-size: 15px;
+  margin-left: 65px;
+  padding: 0 5px 3px;
+  text-transform: uppercase;
+}
+
+nav.subnav {
+  background-color: #d4d4d4;
+  color: white;
+  padding: 15px 0 8px;
+  h3, .h3, h2, .h2 {
+    margin: 0; padding: 0;
+  }
+  h3, .h3 {
+    font-size: 17px;
+  }
+  h2, .h2 {
+    font-size: 12px;
+  }
+}
+
+main {
+  padding-top: 45px;
+}
+
+.showcase h1 {
+  color: @gray;
+  font-size: 23px;
+  margin: 0;
+}
+
+footer {
+  .top {
+    background-color: #dcdcdc;
+    color: white;
+    font-weight: bold;
+    .box-shadow(0px -2px 2px rgba(6,6,6,.23) inset);
+    .container {
+      position: relative;
+      padding-top: 6px;
+      padding-bottom: 8px;
+    }
+  }
+  .bottom {
+    height: 82px;
+    background-color: #b9baba;
+    padding-top: 15px;
+    color: white;
+  }
+}

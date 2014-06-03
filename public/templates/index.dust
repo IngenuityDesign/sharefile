@@ -1,19 +1,51 @@
 {>"layouts/master" /}
 
 {<body}
-<div class="panel panel-default" ng-controller="FilesController as Filer">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Ingenuity File Share</h1>
+            <div class="panel panel-default" ng-controller="FilesController as Filer">
 
-    <div class="panel-heading">IngenuityDesign/Files{~lb}{~lb}currentPath{~rb}{~rb}</div>
+                <div class="panel-heading">
+                    <strong>IngenuityDesign/Files{~lb}{~lb}currentPath{~rb}{~rb}</strong>
 
-    <!-- List group -->
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="file in Filer.files">
-            <a href="javascript: void(0);" ng-click="loadPath(file);" ng-href="{~lb}{~lb}path{~rb}{~rb}">
-                <i class="glyphicon glyphicon-folder-close" ng-show="file.isDirectory"></i>
-                <i class="glyphicon glyphicon glyphicon-file" ng-hide="file.isDirectory"></i>
-                 {~lb}{~lb}file.file{~rb}{~rb}
-            </a>
-        </li>
-    </ul>
+                    <a href="javascript:void(0);" class="pull-right" ng-hide="currentPath=='/' || currentPath==''" ng-click="goUp()">
+                        Go Up <i class="glyphicon glyphicon-upload"></i>
+                    </a>
+                </div>
+                <!-- List group -->
+                <ul class="list-group" ng-hide="viewingFile">
+                    <li class="list-group-item" ng-repeat="file in Filer.files">
+                        <i class="glyphicon glyphicon-folder-close" ng-show="file.isDirectory"></i>
+                        <i class="glyphicon glyphicon glyphicon-file" ng-hide="file.isDirectory"></i>
+                        &nbsp;
+                        <a href="javascript: void(0);" ng-click="loadPath(file);" ng-href="{~lb}{~lb}path{~rb}{~rb}">
+                            {~lb}{~lb}file.file{~rb}{~rb}
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="list-group" ng-show="viewingFile">
+                    <li class="list-group-item">
+                        <i class="glyphicon glyphicon-cloud-download"></i>
+                        &nbsp;
+                        <a href="javascript:void(0);" ng-click="downloadFile(viewingFile);">
+                            Download</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="javascript:void(0);" ng-click="openFile('samba:///Volumes/Files' + currentPath)">Open on Mac</a>
+                        <a href="javascript:void(0);" ng-click="openFile('file://\\\\IngenuityDesign\\Files' + currentPath );">Open on PC</a>
+                    </li>
+                    <li class="list-group-item">
+                        File created <strong>{~lb}{~lb}viewingFile.created | date : 'medium'{~rb}{~rb}</strong>
+                    </li>
+                    <li class="list-group-item">
+                        File last modified <strong>{~lb}{~lb}viewingFile.modified | date : 'medium'{~rb}{~rb}</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 {/body}

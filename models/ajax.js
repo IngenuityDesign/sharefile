@@ -2,7 +2,8 @@
 
 var formatting = require('../lib/formatting'),
     fs = require('fs'),
-    when = require('when');
+    when = require('when'),
+    pathUtil = require('path');
 
 var createFileReturn = function( curFile, path, url, callback ) {
     fs.stat( url + "\\" + curFile, function(err, stats) {
@@ -25,7 +26,6 @@ var statDirectory = function( filesFound, path, url ) {
         var foundFiles = filesFound.length,
             current = 0,
             files = [];
-        console.log(foundFiles);
         for (var x in filesFound) {
             createFileReturn(filesFound[x], path, url,  function(err,data) {
                 current++;
@@ -54,7 +54,16 @@ module.exports = {
                                     })
                             });
                         } else if (stats.isFile()) {
-                            reject(202);
+                            resolve({
+                                template: 'file',
+                                path: path,
+                                file: pathUtil.basename(path),
+                                parent: pathUtil.dirname(path),
+                                isDirectory: false,
+                                size: stats.size,
+                                created: stats.ctime,
+                                modified: stats.mtime
+                            });
                         } else {
                             //404
                             reject(404);
