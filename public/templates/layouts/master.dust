@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sharefile">
+<head>
+    <meta charset="utf-8" />
+    <title>{+title /}</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="/components/angular/angular.min.js" type="text/javascript"></script>
+    <script data-main="js/app" src="components/requirejs/require.js"></script>
+    <script src="/js/app.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrapper">
+    {+body /}
+</div>
+</body>
+</html>
