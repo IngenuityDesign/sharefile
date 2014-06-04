@@ -6,18 +6,17 @@
         this.files = [];
         var par = this;
         $scope.viewingFile = false;
-
         $scope.currentPath = "/";
 
         $scope.loadPath = function (file) {
-
             if (!file) {
-                var req = $http.get('/ajax');
+                var req = $http.get('/data');
                 var path = "/";
             } else {
                 var path = file.path;
-                var req = $http.get('ajax?path=' + path);
+                var req = $http.get('data?path=' + path);
             }
+            
             req.then(function (resp) {
                 $scope.currentPath = path;
                 window.location.hash = $scope.currentPath;
@@ -29,6 +28,10 @@
                     par.files = resp.data;
                     $scope.viewingFile = false;
                 }
+            }, function( rejection ) {
+
+            }, function( notification ) {
+
             });
 
         };

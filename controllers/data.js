@@ -1,10 +1,10 @@
 'use strict';
 
-var Model = require('../models/ajax.js');
+var Model = require('../models/filesystem.js');
 
 module.exports = function (app) {
 
-    app.get('/ajax', function (req, res) {
+    app.get('/data', function (req, res) {
 
         var path = !!req.query.path ? req.query.path : '';
 
