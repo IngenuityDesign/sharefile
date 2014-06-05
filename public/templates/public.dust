@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Ingenuity File Share</h1>
+            <p>Welcome to the public site: {site}</p>
+        </div>
+    </div>
+</div>
+{/body}

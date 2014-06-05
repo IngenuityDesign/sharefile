@@ -4,7 +4,11 @@
             "404": "errors/404",
             "500": "errors/500",
             "503": "errors/503"
-        }
+        },
+        "errorHandler": {
+            "dumpExceptions": true,
+            "showStack": true
+        },
 //      "appsec": {
 //        "csrf": true,
 //        "csp": false,
@@ -17,10 +21,10 @@
 //          "less": "css"
 //      },
 //
-//      "session": {
-//          "module": "memory",
-//          "secret": "ddd90ba78a5a887e43960c48ce458429eab0c161"
-//      },
+      "session": {
+          "module": "memory",
+          "secret": "ddd90ba78a5a887e43960c48ce458429eab0c161"
+      }
 //
 //      "static": {
 //          "srcRoot": "path:./public",
