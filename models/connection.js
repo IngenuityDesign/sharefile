@@ -37,18 +37,25 @@ module.exports = function ConnectionModel() {
 
     this.getSubdomain = function( ) {
 
-        if (this.isRoot()) return null;
-
         //now let's try to get the subdomain
         //just remove the root from the hostname
-        var subdomain = hostname.replace( "." + root, "" );
+        var subdomain;
+        
+        if (hostname == "localhost")
+            subdomain = false;
+        else
+            subdomain = hostname.replace( "." + root, "" );
 
+        console.log("Subdomain: " + subdomain);
         return subdomain;
 
     }
 
-    this.route = function( isLocalAndRoot, notLocalAndRoot, isPublic ) {
+    this.route = function( next ) {
 
+        next( this.getSubdomain() );
+        
+        /* remnants of the past
         if (this.isRoot()) {
             if (this.isLocal()) {
                 if (isLocalAndRoot) isLocalAndRoot();
@@ -61,9 +68,11 @@ module.exports = function ConnectionModel() {
         }
 
         return this;
+        */
+        return this;
 
     }
 
     return this;
-
+    
 };

@@ -1,0 +1,7 @@
+{
+    "host": "192.168.50.142",
+    "port": 8001,
+
+    "fileServerPath": "\\\\192.168.50.50\\Files\Public"
+    
+}

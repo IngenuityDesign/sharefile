@@ -1,0 +1,7 @@
+{
+    "host": "",
+    "port": 80,
+
+    "fileServerPath": "/Files/Public"
+
+}

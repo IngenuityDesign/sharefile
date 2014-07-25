@@ -2,12 +2,16 @@
 
 
 var kraken = require('kraken-js'),
-    app = {};
+    app = {},
+    ServerSystem = require('./models/filesystem');
 
 
 app.configure = function configure(nconf, next) {
     // Async method run on startup.
+    nconf.set('fileServerPath', "\\\\192.168.50.50\\Files\\Public"); //stupid kraken wont get my config
+    ServerSystem.setConf(nconf);
     console.log(nconf.get('fileServerPath'));
+
     next(null);
 };
 
